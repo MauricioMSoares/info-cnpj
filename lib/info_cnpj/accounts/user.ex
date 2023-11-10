@@ -1,9 +1,11 @@
 defmodule InfoCnpj.Accounts.User do
   use Ecto.Schema
   import Ecto.Changeset
+  import Brcpfcnpj.Changeset
 
   schema "users" do
     field :email, :string
+    field :cpf, :string
     field :password, :string, virtual: true, redact: true
     field :hashed_password, :string, redact: true
     field :confirmed_at, :naive_datetime
@@ -36,8 +38,9 @@ defmodule InfoCnpj.Accounts.User do
   """
   def registration_changeset(user, attrs, opts \\ []) do
     user
-    |> cast(attrs, [:email, :password])
+    |> cast(attrs, [:email, :cpf, :password])
     |> validate_email(opts)
+    |> validate_cpf(:cpf)
     |> validate_password(opts)
   end
 

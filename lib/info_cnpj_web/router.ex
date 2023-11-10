@@ -18,6 +18,14 @@ defmodule InfoCnpjWeb.Router do
   end
 
   scope "/", InfoCnpjWeb do
+    pipe_through [:browser, :require_authenticated_user]
+
+    live_session :authenticated, on_mount: {InfoCnpjWeb.UserAuth, :ensure_authenticated} do
+      live "/verify-cnpj", VerifyCnpjLive
+    end
+  end
+
+  scope "/", InfoCnpjWeb do
     pipe_through :browser
 
     get "/", PageController, :home

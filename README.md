@@ -3,14 +3,12 @@ Info CNPJ is a simple Elixir/Phoenix application developed to turn company infor
 <br>
 Having the CNPJ number in hands, get access to every detail on the company, enriching your lead's qualification.
 <br>
+<br>
 
 ## External API
 Consulta CNPJ: https://www.gov.br/conecta/catalogo/apis/consulta-cnpj
 <br>
+<br>
 
 ## Additional Dependencies
-<br>
-...
-
-mix phx.gen.schema Company companies ni:string company_type:string enterprise_name:string fantasy_name:string opening_date:string country:string county:string district:string public_place:string number:string phone_ddd:string phone_number:string
-mix phx.gen.context Companies Company companies ni:string company_type:string enterprise_name:string fantasy_name:string opening_date:string country:string county:string district:string public_place:string number:string phone_ddd:string phone_number:string
+1. BR CPF CNPJ - brazilian documents' validation: https://hex.pm/packages/brcpfcnpj

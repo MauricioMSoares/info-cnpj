@@ -11,6 +11,7 @@ defmodule InfoCnpj.CompaniesFixtures do
     {:ok, company} =
       attrs
       |> Enum.into(%{
+        cnpj: "some cnpj",
         company_type: "some company_type",
         country: "some country",
         county: "some county",
