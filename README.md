@@ -13,6 +13,9 @@ Consulta CNPJ: https://www.gov.br/conecta/catalogo/apis/consulta-cnpj
 ## Additional Dependencies
 1. BR CPF CNPJ - brazilian documents' validation: https://hex.pm/packages/brcpfcnpj
 <br>
+
+2. HTTPoison
+<br>
 <br>
 
 ## Plugins

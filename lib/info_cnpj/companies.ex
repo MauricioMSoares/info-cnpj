@@ -101,4 +101,8 @@ defmodule InfoCnpj.Companies do
   def change_company(%Company{} = company, attrs \\ %{}) do
     Company.changeset(company, attrs)
   end
+
+  def get_company_by_cnpj(cnpj) do
+    Repo.get(Company, cnpj)
+  end
 end
