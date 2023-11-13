@@ -1,0 +1,12 @@
+<h2>Type the CNPJ in the field below</h2>
+<div>
+  <.form :let={f} id="form-cnpj" phx-change="validate" phx-submit="save">
+    <.input id="input-cnpj" field={f[:cnpj]} type="input" />
+  </.form>
+</div>
+<%= if @cnpj_valid do %>
+<div id="company-info">
+  Teste
+</div>
+<% end %>
+

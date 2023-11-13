@@ -4,38 +4,20 @@ defmodule InfoCnpjWeb.VerifyCnpjLive do
   alias InfoCnpj.Companies
   alias InfoCnpj.Companies.Company
 
-  def mount(socket) do
-    changeset = Companies.change_company(%Company{})
+  import Brcpfcnpj, only: [cnpj_valid?: 1]
 
-    socket =
-      assign(
-        socket,
-        form: to_form(changeset)
-      )
+  def mount(_params, _session, socket) do
+    cnpj_valid = false
 
-    {:ok, socket}
+    IO.inspect("Printa aqui")
+    {:ok, assign(socket, :cnpj_valid, cnpj_valid)}
   end
 
-  def render(assigns) do
-    ~H"""
-    <h2>Type the CNPJ in the field below</h2>
-    <.form for={@form} phx-submit="verify-cnpj">
-      <.input field={@form[:cnpj]} phx-change="validate" phx-debounce="blur" />
-      <.button>Verify</.button>
-    </.form>
-    """
-  end
+  def handle_event("validate", attrs, socket) do
+    cnpj =
+      attrs
+      |> Map.get("cnpj")
 
-  def handle_event("validate", %{"cnpj" => cnpj}, socket) do
-    changeset =
-      %Company{}
-      |> Companies.change_company(cnpj)
-      |> Map.put(:action, :validate)
-
-    {:noreply, assign_form(socket, changeset)}
-  end
-
-  defp assign_form(socket, %Ecto.Changeset{} = changeset) do
-    assign(socket, :form, to_form(changeset))
+    {:noreply, assign(socket, :cnpj_valid, cnpj_valid?(cnpj))}
   end
 end
