@@ -105,4 +105,9 @@ defmodule InfoCnpj.Companies do
   def get_company_by_cnpj(cnpj) do
     Repo.get_by(Company, [cnpj: cnpj])
   end
+
+  def create_retrieved_company(%Company{} = company) do
+    company
+    |> Repo.insert()
+  end
 end
