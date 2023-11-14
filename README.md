@@ -14,7 +14,7 @@ CNPJ.ws: https://www.cnpj.ws/
 1. BR CPF CNPJ - brazilian documents' validation: https://hex.pm/packages/brcpfcnpj
 <br>
 
-2. HTTPoison
+2. HTTPoison - HTTP Requests
 <br>
 <br>
 

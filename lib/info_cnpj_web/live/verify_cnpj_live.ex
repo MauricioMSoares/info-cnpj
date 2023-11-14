@@ -21,6 +21,7 @@ defmodule InfoCnpjWeb.VerifyCnpjLive do
   end
 
   def handle_event("find", %{"cnpj" => cnpj}, socket) do
+    cnpj = extract_cnpj_number(cnpj)
     company = Companies.get_company_by_cnpj(cnpj)
 
     case company do
@@ -86,5 +87,17 @@ defmodule InfoCnpjWeb.VerifyCnpjLive do
 
   defp access_estabelecimento(json) do
     Map.get(json, "estabelecimento", %{})
+  end
+
+  @cnpj_regex ~r/(\d{2})\.?(\d{3})\.?(\d{3})\/?(\d{4})-?(\d{2})/
+
+  def extract_cnpj_number(cnpj) do
+    case Regex.match?(@cnpj_regex, cnpj) do
+      true ->
+        Regex.replace(@cnpj_regex, cnpj, "\\1\\2\\3\\4\\5")
+
+      false ->
+        nil
+    end
   end
 end
