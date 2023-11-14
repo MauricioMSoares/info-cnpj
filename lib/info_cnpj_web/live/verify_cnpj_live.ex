@@ -5,7 +5,6 @@ defmodule InfoCnpjWeb.VerifyCnpjLive do
 
   use InfoCnpjWeb, :live_view
 
-  import HTTPoison
   import Brcpfcnpj, only: [cnpj_valid?: 1]
 
   def mount(_params, _session, socket) do
@@ -29,22 +28,24 @@ defmodule InfoCnpjWeb.VerifyCnpjLive do
         {:noreply, assign(socket, :company, company)}
 
       nil ->
+        IO.inspect("Não achei, vou procurar no Google")
         data = get_company_from_api(cnpj)
 
+        IO.inspect("Achei no Google, agora vou salvar no banco")
         Companies.create_company(%Company{
           cnpj: cnpj,
-          company_type: data.tipoEstabelecimento,
-          country: data.endereco.pais.codigo,
-          county: data.endereco.municipio.codigo,
-          district: data.endereco.bairro,
-          enterprise_name: data.nomeEmpresarial,
-          fantasy_name: data.nomeFantasia,
-          ni: data.ni,
-          number: data.endereco.numero,
-          opening_date: data.dataAbertura,
-          phone_ddd: data.telefone.ddd,
-          phone_number: data.telefone.numero,
-          public_place: data.endereco.logradouro
+          company_type: data.root.estabelecimento.tipo,
+          country: data.root.estabelecimento.pais.nome,
+          county: data.root.estabelecimento.cidade.nome,
+          district: data.root.estabelecimento.bairro,
+          enterprise_name: data.root.razao_social,
+          fantasy_name: data.root.estabelecimento.nome_fantasia,
+          cep: data.root.cep,
+          number: data.root.estabelecimento.numero,
+          opening_date: data.root.estabelecimento.data_inicio_atividade,
+          phone_ddd: data.root.estabelecimento.ddd1,
+          phone_number: data.root.estabelecimento.telefone1,
+          public_place: data.root.estabelecimento.logradouro
         })
 
         {:noreply, assign(socket, :company, company)}
@@ -57,7 +58,7 @@ defmodule InfoCnpjWeb.VerifyCnpjLive do
 
   defp get_company_from_api(cnpj) do
     case HTTPoison.get!(
-           "https://h-apigateway.conectagov.estaleiro.serpro.gov.br/api-cnpj-empresa/v2/empresa/#{cnpj}"
+           "https://publica.cnpj.ws/cnpj/#{cnpj}"
          ) do
       {:ok, %HTTPoison.Response{body: body, status_code: 200}} ->
         {:ok, Jason.decode!(body)}

@@ -6,7 +6,7 @@ Having the CNPJ number in hands, get access to every detail on the company, enri
 <br>
 
 ## External API
-Consulta CNPJ: https://www.gov.br/conecta/catalogo/apis/consulta-cnpj
+CNPJ.ws: https://www.cnpj.ws/
 <br>
 <br>
 

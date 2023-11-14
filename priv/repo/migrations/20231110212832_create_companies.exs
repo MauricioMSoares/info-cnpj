@@ -4,7 +4,7 @@ defmodule InfoCnpj.Repo.Migrations.CreateCompanies do
   def change do
     create table(:companies) do
       add :cnpj, :string
-      add :ni, :string
+      add :cep, :string
       add :company_type, :string
       add :enterprise_name, :string
       add :fantasy_name, :string

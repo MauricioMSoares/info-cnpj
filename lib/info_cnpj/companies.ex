@@ -103,6 +103,6 @@ defmodule InfoCnpj.Companies do
   end
 
   def get_company_by_cnpj(cnpj) do
-    Repo.get(Company, cnpj)
+    Repo.get_by(Company, [cnpj: cnpj])
   end
 end
