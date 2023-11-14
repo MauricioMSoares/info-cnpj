@@ -1,5 +1,4 @@
 defmodule InfoCnpjWeb.VerifyCnpjLive do
-  alias DBConnection.Task
   alias InfoCnpj.Companies
   alias InfoCnpj.Companies.Company
 
@@ -9,9 +8,10 @@ defmodule InfoCnpjWeb.VerifyCnpjLive do
 
   def mount(_params, _session, socket) do
     cnpj_valid = false
+    has_data = false
     company = %Company{}
 
-    {:ok, assign(socket, cnpj_valid: cnpj_valid, company: company)}
+    {:ok, assign(socket, cnpj_valid: cnpj_valid, has_data: has_data, company: company)}
   end
 
   def handle_event("validate", attrs, socket) do
@@ -25,11 +25,17 @@ defmodule InfoCnpjWeb.VerifyCnpjLive do
 
     case company do
       %Company{} ->
+        IO.inspect("Encontrei no banco")
+        IO.inspect(company)
         {:noreply, assign(socket, :company, company)}
 
       _ ->
         data = get_company_from_api(cnpj)
-        company = create_company_from_json(data, cnpj)
+        company = create_company_struct_from_json(data)
+        Companies.create_retrieved_company(company)
+
+        IO.inspect("Trouxe de lá da API")
+        IO.inspect(company)
 
         {:noreply, assign(socket, :company, company)}
     end
@@ -48,33 +54,37 @@ defmodule InfoCnpjWeb.VerifyCnpjLive do
 
       %HTTPoison.Response{status_code: 404} ->
         {:error, :not_found}
-
-      %HTTPoison.Error{reason: reason} ->
-        {:error, reason}
     end
   end
 
-  defp create_company_from_json(data, cnpj) do
+  defp create_company_struct_from_json(data) do
     case data do
       {:ok, data} ->
-        Companies.create_retrieved_company(%Company{
-          cnpj: cnpj,
-          company_type: Map.get(data, "estabelecimento", %{})["tipo"],
-          country: Map.get(Map.get(data, "estabelecimento", %{}), "pais", %{})["nome"],
-          county: Map.get(Map.get(data, "estabelecimento", %{}), "cidade", %{})["nome"],
-          district: Map.get(data, ["estabelecimento"], %{})["bairro"],
+        %Company{
+          cep: access_estabelecimento(data)["cep"],
+          cnpj: access_estabelecimento(data)["cnpj"],
+          company_type: access_estabelecimento(data)["tipo"],
+          country: Map.get(access_estabelecimento(data), "pais", %{})["nome"],
+          county: Map.get(access_estabelecimento(data), "cidade", %{})["nome"],
+          district: access_estabelecimento(data)["bairro"],
+          email: access_estabelecimento(data)["email"],
           enterprise_name: data["razao_social"],
-          fantasy_name: Map.get(data, ["estabelecimento"], %{})["nome_fantasia"],
-          cep: Map.get(data, ["estabelecimento"], %{})["cep"],
-          number: Map.get(data, ["estabelecimento"], %{})["numero"],
-          opening_date: Map.get(data, ["estabelecimento"], %{})["data_inicio_atividade"],
-          phone_ddd: Map.get(data, ["estabelecimento"], %{})["ddd1"],
-          phone_number: Map.get(data, ["estabelecimento"], %{})["telefone1"],
-          public_place: Map.get(data, ["estabelecimento"], %{})["logradouro"]
-        })
+          fantasy_name: access_estabelecimento(data)["nome_fantasia"],
+          number: access_estabelecimento(data)["numero"],
+          opening_date: access_estabelecimento(data)["data_inicio_atividade"],
+          phone_ddd: access_estabelecimento(data)["ddd1"],
+          phone_number: access_estabelecimento(data)["telefone1"],
+          public_place: access_estabelecimento(data)["logradouro"],
+          public_place_type: access_estabelecimento(data)["tipo_logradouro"],
+          state: Map.get(access_estabelecimento(data), "estado", %{})["nome"]
+        }
 
       _ ->
-        IO.puts("Invalid")
+        IO.puts("An error occurred while attempting to create company struct.")
     end
+  end
+
+  defp access_estabelecimento(json) do
+    Map.get(json, "estabelecimento", %{})
   end
 end
