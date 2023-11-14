@@ -3,3 +3,21 @@
 @import "tailwindcss/utilities";
 
 /* This file is for your main application CSS */
+
+.cnpj-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.cnpj-form input {
+    border: black solid 3px;
+    height: 32px;
+    width: 600px;
+}
+
+.cnpj-form button {
+    margin: 16px 0;
+    width: 120px;
+}

@@ -1,7 +1,7 @@
-<h2 class="text-center">Type the CNPJ in the field below</h2>
+<h1 class="text-center">Type the CNPJ in the field below</h1>
 <div>
-  <.form :let={f} id="form-cnpj" phx-change="validate" phx-submit="find">
-    <.input class="border-2 border-slate-900 " id="input-cnpj" field={f[:cnpj]} type="input" />
+  <.form class="cnpj-form" :let={f} id="form-cnpj" phx-change="validate" phx-submit="find">
+    <.input id="input-cnpj" field={f[:cnpj]} type="input" />
     <%= if @cnpj_valid do %>
       <.button>Verify</.button>
     <% end %>
