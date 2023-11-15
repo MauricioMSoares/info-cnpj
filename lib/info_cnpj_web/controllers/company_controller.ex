@@ -58,4 +58,46 @@ defmodule InfoCnpjWeb.CompanyController do
     conn
     |> put_flash(:info, "Company deleted successfully.")
   end
+
+  def create_csv(conn, _params) do
+    fields = [
+      :enterprise_name,
+      :fantasy_name,
+      :company_type,
+      :country,
+      :state,
+      :county,
+      :district,
+      :public_place_type,
+      :public_place,
+      :number,
+      :cep,
+      :cnpj,
+      :email,
+      :phone_ddd,
+      :phone_number,
+      :opening_date
+    ]
+
+    csv_data = csv_content(Companies.list_companies(), fields)
+
+    conn
+    |> put_resp_content_type("text/csv")
+    |> put_resp_header("content-disposition", "attachment; filename=\"companies.csv\"")
+    |> send_resp(200, csv_data)
+  end
+
+  defp csv_content(records, fields) do
+    records
+    |> Enum.map(fn record ->
+      record
+      |> Map.from_struct()
+      |> Map.take([])
+      |> Map.merge(Map.take(record, fields))
+      |> Map.values()
+    end)
+    |> CSV.encode()
+    |> Enum.to_list()
+    |> to_string()
+  end
 end
