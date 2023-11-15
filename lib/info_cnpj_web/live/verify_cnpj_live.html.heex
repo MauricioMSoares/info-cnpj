@@ -1,7 +1,7 @@
 <h1 class="text-center">Type the CNPJ in the field below</h1>
 <div>
-  <.form class="cnpj-form" :let={f} id="form-cnpj" phx-change="validate" phx-submit="find">
-    <.input id="input-cnpj" field={f[:cnpj]} type="input" />
+  <.form for={%{}} class="cnpj-form" :let={f} id="form-cnpj" phx-change="validate" phx-submit="find">
+    <.input id="input-cnpj" field={f[:cnpj]} type="text" />
     <%= if @cnpj_valid do %>
       <.button>Verify</.button>
     <% end %>
@@ -9,14 +9,14 @@
 </div>
 <%= if @company != %Company{} do %>
 <div id="company-info">
-  <div class="company-fields">Enterprise name: <%= @company.enterprise_name %></div>
-  <div class="company-fields">Fantasy name: <%= @company.fantasy_name %></div>
-  <div class="company-fields">Company type: <%= @company.company_type %></div>
-  <div class="company-fields">Location: <%= @company.public_place_type %> <%= @company.public_place %>, <%= @company.number %>. <%= @company.district %>, <%= @company.county %>, <%= @company.state %>, <%= @company.country %></div>
-  <div class="company_fields">ZIP Code: <%= @company.cep %></div>
-  <div class="company_fields">E-mail:  <%= @company.email %></div>
-  <div class="company_fields">Phone number: <%= @company.phone_ddd %> <%= @company.phone_number %></div>
-  <div class="company_fields">Opening date: <%= @company.opening_date %></div>
+  <div class="company-fields"><b>Enterprise name:</b> <%= @company.enterprise_name %></div>
+  <div class="company-fields"><b>Fantasy name:</b> <%= @company.fantasy_name %></div>
+  <div class="company-fields"><b>Company type:</b> <%= @company.company_type %></div>
+  <div class="company-fields"><b>Location:</b> <%= @company.public_place_type %> <%= @company.public_place %>, <%= @company.number %>. <%= @company.district %>, <%= @company.county %>, <%= @company.state %>, <%= @company.country %></div>
+  <div class="company_fields"><b>ZIP Code:</b> <%= @company.cep %></div>
+  <div class="company_fields"><b>E-mail:</b>  <%= @company.email %></div>
+  <div class="company_fields"><b>Phone number:</b> <%= @company.phone_ddd %> <%= @company.phone_number %></div>
+  <div class="company_fields"><b>Opening date:</b> <%= @company.opening_date %></div>
 </div>
 <% end %>
 
