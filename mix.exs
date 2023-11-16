@@ -53,7 +53,8 @@ defmodule InfoCnpj.MixProject do
       {:dns_cluster, "~> 0.1.1"},
       {:plug_cowboy, "~> 2.5"},
       {:brcpfcnpj, "~> 1.0"},
-      {:httpoison, "~> 2.2"}
+      {:httpoison, "~> 2.2"},
+      {:csv, "~> 3.2"}
     ]
   end
 

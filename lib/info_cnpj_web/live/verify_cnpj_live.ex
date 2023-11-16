@@ -1,6 +1,7 @@
 defmodule InfoCnpjWeb.VerifyCnpjLive do
   alias InfoCnpj.Companies
   alias InfoCnpj.Companies.Company
+  alias InfoCnpj.Csv
 
   use InfoCnpjWeb, :live_view
 
@@ -40,6 +41,12 @@ defmodule InfoCnpjWeb.VerifyCnpjLive do
 
         {:noreply, assign(socket, :company, company)}
     end
+  end
+
+  def handle_event("export-csv", _, socket) do
+    Csv.create_csv()
+
+    {:noreply, socket}
   end
 
   defp get_cnpj_from_attrs(attrs) do

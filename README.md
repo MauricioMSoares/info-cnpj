@@ -14,9 +14,12 @@ CNPJ.ws: https://www.cnpj.ws/
 1. BR CPF CNPJ - brazilian documents' validation: https://hex.pm/packages/brcpfcnpj
 <br>
 
-2. HTTPoison - HTTP Requests
+2. HTTPoison - HTTP Requests: https://hex.pm/packages/httpoison
+<br>
+
+3. CSV - .csv file manipulation: https://hex.pm/packages/csv
 <br>
 <br>
 
 ## Plugins
-1. VLibras - Brazilian signals language (consider using a Portuguese translated version of the page for compatibility)
+1. VLibras - Brazilian signals language (consider using a Portuguese translated version of the page for compatibility): https://www.gov.br/governodigital/pt-br/vlibras

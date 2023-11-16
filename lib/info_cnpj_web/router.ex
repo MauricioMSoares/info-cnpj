@@ -22,6 +22,8 @@ defmodule InfoCnpjWeb.Router do
 
     live_session :authenticated, on_mount: {InfoCnpjWeb.UserAuth, :ensure_authenticated} do
       live "/verify-cnpj", VerifyCnpjLive
+
+      post "/companies/csv", CompanyController, :create_csv
     end
   end
 
