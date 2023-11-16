@@ -17,6 +17,16 @@ To run the server in localhost, run in your terminal:
 
 The server will be fired up on port 4000.
 <br>
+<br>
+
+## How to use
+1. To have access to the CNPJ finder and CSV exporter, you must first register with an example e-mail address and a password containing 12 or more characters;
+2. After signing in, click on "Get Started!" or type "/verify-cnpj" in the URL to be redirected to the page;
+3. You may type the CNPJ with or without masks. After a valid CNPJ has been typed, the "Verify" button will become available;
+4. Click it and let the query run. Your data will be shown right below the button;
+5. In order to export data of every company in your local database, click the "Export" button, on the bottom-right side of the page;
+6. Look for "companies.csv" inside your "/tmp" directory.
+<br>
 
 ## External API
 CNPJ.ws: https://www.cnpj.ws/
