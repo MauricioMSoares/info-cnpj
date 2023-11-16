@@ -34,9 +34,9 @@ CNPJ.ws: https://www.cnpj.ws/
 <br>
 
 ## Additional Dependencies
-1. BR CPF CNPJ - brazilian documents' validation: https://hex.pm/packages/brcpfcnpj
-2. HTTPoison - HTTP Requests: https://hex.pm/packages/httpoison
-3. CSV - .csv file manipulation: https://hex.pm/packages/csv
+1. <b>BR CPF CNPJ</b> - brazilian documents' validation: https://hex.pm/packages/brcpfcnpj
+2. <b>HTTPoison</b> - HTTP Requests: https://hex.pm/packages/httpoison
+3. <b>CSV</b> - .csv file manipulation: https://hex.pm/packages/csv
 <br>
 
 ## Plugin
