@@ -102,15 +102,42 @@ defmodule InfoCnpj.Companies do
     Company.changeset(company, attrs)
   end
 
+  @doc """
+  Gets a single company by it's CNPJ.
+
+  ##Examples
+
+      iex> get_company_by_cnpj(12345678901234)
+      %Company{}
+
+  """
   def get_company_by_cnpj(cnpj) do
-    Repo.get_by(Company, [cnpj: cnpj])
+    Repo.get_by(Company, cnpj: cnpj)
   end
 
+  @doc """
+  Creates a company with data retrieved from the external API.
+
+  ##Examples
+
+      iex> create_retrieved_company(company)
+      {:ok, %Company{}}
+
+  """
   def create_retrieved_company(%Company{} = company) do
     company
     |> Repo.insert()
   end
 
+  @doc """
+  Creates a company struct using a JSON returned from the external API.
+
+  ##Examples
+
+      iex> create_company_struct_from_json(data)
+      %Company{}
+
+  """
   def create_company_struct_from_json(data) do
     case data do
       {:ok, data} ->
@@ -140,17 +167,5 @@ defmodule InfoCnpj.Companies do
 
   defp access_estabelecimento(json) do
     Map.get(json, "estabelecimento", %{})
-  end
-
-  def get_company_from_api(cnpj) do
-    case HTTPoison.get!(
-           "https://publica.cnpj.ws/cnpj/#{cnpj}"
-         ) do
-      %HTTPoison.Response{body: body, status_code: 200} ->
-        {:ok, Jason.decode!(body)}
-
-      %HTTPoison.Response{status_code: 404} ->
-        {:error, :not_found}
-    end
   end
 end

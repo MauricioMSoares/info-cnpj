@@ -32,7 +32,7 @@ defmodule InfoCnpjWeb.VerifyCnpjLive do
         {:noreply, assign(socket, :company, company)}
 
       _ ->
-        data = Companies.get_company_from_api(cnpj)
+        data = get_company_from_api(cnpj)
         company = Companies.create_company_struct_from_json(data)
         Companies.create_retrieved_company(company)
 
@@ -47,6 +47,16 @@ defmodule InfoCnpjWeb.VerifyCnpjLive do
     Csv.create_csv()
 
     {:noreply, socket}
+  end
+
+  defp get_company_from_api(cnpj) do
+    case HTTPoison.get!("https://publica.cnpj.ws/cnpj/#{cnpj}") do
+      %HTTPoison.Response{body: body, status_code: 200} ->
+        {:ok, Jason.decode!(body)}
+
+      %HTTPoison.Response{status_code: 404} ->
+        {:error, :not_found}
+    end
   end
 
   defp get_cnpj_from_attrs(attrs) do

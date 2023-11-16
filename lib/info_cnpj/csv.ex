@@ -1,6 +1,9 @@
 defmodule InfoCnpj.Csv do
   alias InfoCnpj.Companies
 
+  @doc """
+  Generates a CSV file in /tmp directory, containing data of all companies in the database
+  """
   def create_csv do
     fields = [
       :enterprise_name,
