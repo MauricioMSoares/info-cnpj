@@ -29,7 +29,7 @@ The server will be fired up on port 4000.
 <br>
 
 ## External API
-CNPJ.ws: https://www.cnpj.ws/
+<b>CNPJ.ws</b> - Find companies' information by their CNPJ: https://www.cnpj.ws/
 <br>
 <br>
 
@@ -40,4 +40,4 @@ CNPJ.ws: https://www.cnpj.ws/
 <br>
 
 ## Plugin
-VLibras - Brazilian signals language (consider using a Portuguese translated version of the page for compatibility): https://www.gov.br/governodigital/pt-br/vlibras
+<b>VLibras</b> - Brazilian signals language (consider using a Portuguese translated version of the page for compatibility): https://www.gov.br/governodigital/pt-br/vlibras
