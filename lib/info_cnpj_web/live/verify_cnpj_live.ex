@@ -1,7 +1,7 @@
 defmodule InfoCnpjWeb.VerifyCnpjLive do
   alias InfoCnpj.Companies
   alias InfoCnpj.Companies.Company
-  alias InfoCnpjWeb.CompanyController
+  alias InfoCnpj.Csv
 
   use InfoCnpjWeb, :live_view
 
@@ -44,9 +44,7 @@ defmodule InfoCnpjWeb.VerifyCnpjLive do
   end
 
   def handle_event("export-csv", _, socket) do
-    IO.inspect("É assim que o socket.assigns.company está")
-    IO.inspect(socket.assigns.company)
-    CompanyController.create_csv(socket, socket.assigns.company)
+    Csv.create_csv()
 
     {:noreply, socket}
   end
