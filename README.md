@@ -1,4 +1,4 @@
-# InfoCnpj
+# Info CNPJ
 Info CNPJ is a simple Elixir/Phoenix application developed to turn company information seeking process into an easy thing.
 <br>
 Having the CNPJ number in hands, get access to every detail on the company, enriching your lead's qualification.
@@ -8,14 +8,15 @@ Having the CNPJ number in hands, get access to every detail on the company, enri
 ## Setup
 Info CNPJ runs in Elixir 1.15.7. Make sure you have this or any older versions installed, along with Erlang.
 <br>
-In order to store data, access "dev.exs" and configure your database. The default version is using PostgreSQL.
+In order to store data locally, access "dev.exs" and configure your database. The default database is using PostgreSQL.
 <br>
-To run the server in localhost, run in your terminal
+To run the server in localhost, run in your terminal:
 
 1. mix deps.get
 2. mix phx.server
 
 The server will be fired up on port 4000.
+<br>
 
 ## External API
 CNPJ.ws: https://www.cnpj.ws/

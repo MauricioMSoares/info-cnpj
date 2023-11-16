@@ -15,6 +15,18 @@ defmodule InfoCnpjWeb.VerifyCnpjLive do
     {:ok, assign(socket, cnpj_valid: cnpj_valid, has_data: has_data, company: company)}
   end
 
+  @doc """
+  Receives a CNPJ input and returns it's validity
+
+  ##Examples
+
+      iex> handle_event("validate", %{"cnpj" => "12345678901234"}, socket)
+      {:noreply, assign(socket, :cnpj_valid, true)}
+
+      iex> handle_event("validate", %{"cnpj" => "123"}, socket)
+      {:noreply, assign(socket, :cnpj_valid, false)}
+
+  """
   def handle_event("validate", attrs, socket) do
     cnpj = get_cnpj_from_attrs(attrs)
 
