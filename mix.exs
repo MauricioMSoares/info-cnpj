@@ -54,7 +54,8 @@ defmodule InfoCnpj.MixProject do
       {:plug_cowboy, "~> 2.5"},
       {:brcpfcnpj, "~> 1.0"},
       {:httpoison, "~> 2.2"},
-      {:csv, "~> 3.2"}
+      {:csv, "~> 3.2"},
+      {:ex_doc, "~> 0.30.9", only: :dev, runtime: false}
     ]
   end
 

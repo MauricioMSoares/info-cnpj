@@ -1,7 +1,11 @@
 defmodule InfoCnpj.CompaniesTest do
+  use ExUnit.Case
+  doctest InfoCnpj.Companies
+
   use InfoCnpj.DataCase
 
   alias InfoCnpj.Companies
+  alias InfoCnpj.Companies.Company
 
   describe "companies" do
     alias InfoCnpj.Companies.Company
