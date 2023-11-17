@@ -9,7 +9,16 @@ defmodule InfoCnpj.MixProject do
       elixirc_paths: elixirc_paths(Mix.env()),
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
-      deps: deps()
+      deps: deps(),
+
+      # ExDoc
+      name: "Info CNPJ",
+      source_url: "https://github.com/MauricioMSoares/info-cnpj",
+      homepage_url: "http://localhost:4000",
+      docs: [
+        # The main page in the docs
+        extras: ["README.md"]
+      ]
     ]
   end
 
@@ -54,7 +63,8 @@ defmodule InfoCnpj.MixProject do
       {:plug_cowboy, "~> 2.5"},
       {:brcpfcnpj, "~> 1.0"},
       {:httpoison, "~> 2.2"},
-      {:csv, "~> 3.2"}
+      {:csv, "~> 3.2"},
+      {:ex_doc, "~> 0.30.9", only: :dev, runtime: false}
     ]
   end
 

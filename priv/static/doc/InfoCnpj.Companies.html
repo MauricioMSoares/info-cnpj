@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.30.9">
+    <meta name="project" content="Info CNPJ v0.1.0">
+
+    <title>InfoCnpj.Companies — Info CNPJ v0.1.0</title>
+    <link rel="stylesheet" href="dist/html-elixir-XFYN5IVA.css" />
+
+
+    <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
+    <script src="dist/handlebars.templates-EPF2X7PV.js"></script>
+    <script src="dist/sidebar_items-0531A898.js"></script>
+
+      <script src="docs_config.js"></script>
+
+    <script async src="dist/html-J2ASZTQE.js"></script>
+
+
+  </head>
+  <body data-type="modules" class="page-module">
+    <script>
+
+      try {
+        var settings = JSON.parse(localStorage.getItem('ex_doc:settings') || '{}');
+
+        if (settings.theme === 'dark' ||
+           ((settings.theme === 'system' || settings.theme == null) &&
+             window.matchMedia('(prefers-color-scheme: dark)').matches)
+           ) {
+          document.body.classList.add('dark')
+        }
+      } catch (error) { }
+    </script>
+
+<div class="main">
+
+<button class="sidebar-button sidebar-toggle" aria-label="toggle sidebar" aria-controls="sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
+</button>
+
+<nav id="sidebar" class="sidebar">
+  <form class="sidebar-search" action="search.html">
+    <label class="search-label">
+      <span class="sr-only">Search documentation of Info CNPJ</span>
+      <input name="q" type="text" class="search-input" placeholder="Search..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+    </label>
+    <button type="submit" class="search-button" aria-label="Submit Search">
+      <i class="ri-search-2-line" aria-hidden="true" title="Submit search"></i>
+    </button>
+    <button type="button" tabindex="-1" class="search-close-button" aria-hidden="true">
+      <i class="ri-close-line ri-lg" title="Cancel search"></i>
+    </button>
+  </form>
+
+  <div class="autocomplete">
+    <div class="autocomplete-results">
+    </div>
+  </div>
+
+  <div class="sidebar-header">
+
+    <div class="sidebar-projectDetails">
+      <a href="http://localhost:4000" class="sidebar-projectName" translate="no">
+Info CNPJ
+      </a>
+      <div class="sidebar-projectVersion" translate="no">
+        v0.1.0
+      </div>
+    </div>
+    <ul id="sidebar-listNav" class="sidebar-listNav" role="tablist">
+      <li>
+        <button id="extras-list-tab-button" role="tab" data-type="extras" aria-controls="extras-tab-panel" aria-selected="true" tabindex="0">
+Pages
+        </button>
+      </li>
+
+        <li>
+          <button id="modules-list-tab-button" role="tab" data-type="modules" aria-controls="modules-tab-panel" aria-selected="false" tabindex="-1">
+            Modules
+          </button>
+        </li>
+
+
+    </ul>
+  </div>
+
+  <div id="extras-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="extras-list-tab-button">
+    <ul id="extras-full-list" class="full-list"></ul>
+  </div>
+
+    <div id="modules-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="modules-list-tab-button" hidden>
+      <ul id="modules-full-list" class="full-list"></ul>
+    </div>
+
+
+</nav>
+
+<main class="content">
+  <output role="status" id="toast"></output>
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+<h1>
+<button class="icon-action display-settings">
+  <i class="ri-settings-3-line"></i>
+  <span class="sr-only">Settings</span>
+</button>
+
+
+    <a href="https://github.com/MauricioMSoares/info-cnpj/blob/main/lib/info_cnpj/companies.ex#L1" title="View Source" class="icon-action" rel="help">
+      <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+      <span class="sr-only">View Source</span>
+    </a>
+
+  <span translate="no">InfoCnpj.Companies</span> 
+  <small class="app-vsn" translate="no">(Info CNPJ v0.1.0)</small>
+
+</h1>
+
+
+  <section id="moduledoc">
+<p>The Companies context.</p>
+  </section>
+
+
+  <section id="summary" class="details-list">
+    <h1 class="section-heading">
+      <a class="hover-link" href="#summary">
+        <i class="ri-link-m" aria-hidden="true"></i>
+      </a>
+      <span class="text">Summary</span>
+    </h1>
+<div class="summary-functions summary">
+  <h2>
+    <a href="#functions">Functions</a>
+  </h2>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#change_company/2" translate="no">change_company(company, attrs \\ %{})</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Returns an <code class="inline">%Ecto.Changeset{}</code> for tracking company changes.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#create_company/1" translate="no">create_company(attrs \\ %{})</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Creates a company.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#create_company_struct_from_json/1" translate="no">create_company_struct_from_json(data)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Creates a company struct using a JSON returned from the external API.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#create_retrieved_company/1" translate="no">create_retrieved_company(company)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Creates a company with data retrieved from the external API.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#delete_company/1" translate="no">delete_company(company)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Deletes a company.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#get_company!/1" translate="no">get_company!(id)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Gets a single company.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#get_company_by_cnpj/1" translate="no">get_company_by_cnpj(cnpj)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Gets a single company by it's CNPJ.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#list_companies/0" translate="no">list_companies()</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Returns the list of companies.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#update_company/2" translate="no">update_company(company, attrs)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Updates a company.</p></div>
+
+    </div>
+
+</div>
+
+  </section>
+
+
+  <section id="functions" class="details-list">
+    <h1 class="section-heading">
+      <a class="hover-link" href="#functions">
+        <i class="ri-link-m" aria-hidden="true"></i>
+      </a>
+      <span class="text">Functions</span>
+    </h1>
+    <div class="functions-list">
+<section class="detail" id="change_company/2">
+
+    <span id="change_company/1"></span>
+
+  <div class="detail-header">
+    <a href="#change_company/2" class="detail-link" title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">change_company(company, attrs \\ %{})</h1>
+
+      <a href="https://github.com/MauricioMSoares/info-cnpj/blob/main/lib/info_cnpj/companies.ex#L101" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>Returns an <code class="inline">%Ecto.Changeset{}</code> for tracking company changes.</p><h2 id="change_company/2-examples" class="section-heading">
+  <a href="#change_company/2-examples" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Examples</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="n">change_company</span><span class="p" data-group-id="5788205711-1">(</span><span class="n">company</span><span class="p" data-group-id="5788205711-1">)</span><span class="w">
+</span><span class="p" data-group-id="5788205711-2">%</span><span class="nc" data-group-id="5788205711-2">Ecto.Changeset</span><span class="p" data-group-id="5788205711-2">{</span><span class="ss">data</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="5788205711-3">%</span><span class="nc" data-group-id="5788205711-3">Company</span><span class="p" data-group-id="5788205711-3">{</span><span class="p" data-group-id="5788205711-3">}</span><span class="p" data-group-id="5788205711-2">}</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="create_company/1">
+
+    <span id="create_company/0"></span>
+
+  <div class="detail-header">
+    <a href="#create_company/1" class="detail-link" title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">create_company(attrs \\ %{})</h1>
+
+      <a href="https://github.com/MauricioMSoares/info-cnpj/blob/main/lib/info_cnpj/companies.ex#L52" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>Creates a company.</p><h2 id="create_company/1-examples" class="section-heading">
+  <a href="#create_company/1-examples" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Examples</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="n">create_company</span><span class="p" data-group-id="4733625392-1">(</span><span class="p" data-group-id="4733625392-2">%{</span><span class="ss">field</span><span class="p">:</span><span class="w"> </span><span class="n">value</span><span class="p" data-group-id="4733625392-2">}</span><span class="p" data-group-id="4733625392-1">)</span><span class="w">
+</span><span class="p" data-group-id="4733625392-3">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="4733625392-4">%</span><span class="nc" data-group-id="4733625392-4">Company</span><span class="p" data-group-id="4733625392-4">{</span><span class="p" data-group-id="4733625392-4">}</span><span class="p" data-group-id="4733625392-3">}</span><span class="w">
+
+</span><span class="gp unselectable">iex&gt; </span><span class="n">create_company</span><span class="p" data-group-id="4733625392-5">(</span><span class="p" data-group-id="4733625392-6">%{</span><span class="ss">field</span><span class="p">:</span><span class="w"> </span><span class="n">bad_value</span><span class="p" data-group-id="4733625392-6">}</span><span class="p" data-group-id="4733625392-5">)</span><span class="w">
+</span><span class="p" data-group-id="4733625392-7">{</span><span class="ss">:error</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="4733625392-8">%</span><span class="nc" data-group-id="4733625392-8">Ecto.Changeset</span><span class="p" data-group-id="4733625392-8">{</span><span class="p" data-group-id="4733625392-8">}</span><span class="p" data-group-id="4733625392-7">}</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="create_company_struct_from_json/1">
+
+  <div class="detail-header">
+    <a href="#create_company_struct_from_json/1" class="detail-link" title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">create_company_struct_from_json(data)</h1>
+
+      <a href="https://github.com/MauricioMSoares/info-cnpj/blob/main/lib/info_cnpj/companies.ex#L141" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>Creates a company struct using a JSON returned from the external API.</p><h2 id="create_company_struct_from_json/1-examples" class="section-heading">
+  <a href="#create_company_struct_from_json/1-examples" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Examples</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="n">create_company_struct_from_json</span><span class="p" data-group-id="7334002423-1">(</span><span class="n">data</span><span class="p" data-group-id="7334002423-1">)</span><span class="w">
+</span><span class="p" data-group-id="7334002423-2">%</span><span class="nc" data-group-id="7334002423-2">Company</span><span class="p" data-group-id="7334002423-2">{</span><span class="p" data-group-id="7334002423-2">}</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="create_retrieved_company/1">
+
+  <div class="detail-header">
+    <a href="#create_retrieved_company/1" class="detail-link" title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">create_retrieved_company(company)</h1>
+
+      <a href="https://github.com/MauricioMSoares/info-cnpj/blob/main/lib/info_cnpj/companies.ex#L127" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>Creates a company with data retrieved from the external API.</p><h2 id="create_retrieved_company/1-examples" class="section-heading">
+  <a href="#create_retrieved_company/1-examples" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Examples</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="n">create_retrieved_company</span><span class="p" data-group-id="5939043471-1">(</span><span class="n">company</span><span class="p" data-group-id="5939043471-1">)</span><span class="w">
+</span><span class="p" data-group-id="5939043471-2">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="5939043471-3">%</span><span class="nc" data-group-id="5939043471-3">Company</span><span class="p" data-group-id="5939043471-3">{</span><span class="p" data-group-id="5939043471-3">}</span><span class="p" data-group-id="5939043471-2">}</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="delete_company/1">
+
+  <div class="detail-header">
+    <a href="#delete_company/1" class="detail-link" title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">delete_company(company)</h1>
+
+      <a href="https://github.com/MauricioMSoares/info-cnpj/blob/main/lib/info_cnpj/companies.ex#L88" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>Deletes a company.</p><h2 id="delete_company/1-examples" class="section-heading">
+  <a href="#delete_company/1-examples" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Examples</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="n">delete_company</span><span class="p" data-group-id="3464254509-1">(</span><span class="n">company</span><span class="p" data-group-id="3464254509-1">)</span><span class="w">
+</span><span class="p" data-group-id="3464254509-2">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="3464254509-3">%</span><span class="nc" data-group-id="3464254509-3">Company</span><span class="p" data-group-id="3464254509-3">{</span><span class="p" data-group-id="3464254509-3">}</span><span class="p" data-group-id="3464254509-2">}</span><span class="w">
+
+</span><span class="gp unselectable">iex&gt; </span><span class="n">delete_company</span><span class="p" data-group-id="3464254509-4">(</span><span class="n">company</span><span class="p" data-group-id="3464254509-4">)</span><span class="w">
+</span><span class="p" data-group-id="3464254509-5">{</span><span class="ss">:error</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="3464254509-6">%</span><span class="nc" data-group-id="3464254509-6">Ecto.Changeset</span><span class="p" data-group-id="3464254509-6">{</span><span class="p" data-group-id="3464254509-6">}</span><span class="p" data-group-id="3464254509-5">}</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="get_company!/1">
+
+  <div class="detail-header">
+    <a href="#get_company!/1" class="detail-link" title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">get_company!(id)</h1>
+
+      <a href="https://github.com/MauricioMSoares/info-cnpj/blob/main/lib/info_cnpj/companies.ex#L38" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>Gets a single company.</p><p>Raises <a href="https://hexdocs.pm/ecto/3.10.3/Ecto.NoResultsError.html"><code class="inline">Ecto.NoResultsError</code></a> if the Company does not exist.</p><h2 id="get_company!/1-examples" class="section-heading">
+  <a href="#get_company!/1-examples" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Examples</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="n">get_company!</span><span class="p" data-group-id="2047114203-1">(</span><span class="mi">123</span><span class="p" data-group-id="2047114203-1">)</span><span class="w">
+</span><span class="p" data-group-id="2047114203-2">%</span><span class="nc" data-group-id="2047114203-2">Company</span><span class="p" data-group-id="2047114203-2">{</span><span class="p" data-group-id="2047114203-2">}</span><span class="w">
+
+</span><span class="gp unselectable">iex&gt; </span><span class="n">get_company!</span><span class="p" data-group-id="2047114203-3">(</span><span class="mi">456</span><span class="p" data-group-id="2047114203-3">)</span><span class="w">
+</span><span class="gt">** (Ecto.NoResultsError)</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="get_company_by_cnpj/1">
+
+  <div class="detail-header">
+    <a href="#get_company_by_cnpj/1" class="detail-link" title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">get_company_by_cnpj(cnpj)</h1>
+
+      <a href="https://github.com/MauricioMSoares/info-cnpj/blob/main/lib/info_cnpj/companies.ex#L114" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>Gets a single company by it's CNPJ.</p><h2 id="get_company_by_cnpj/1-examples" class="section-heading">
+  <a href="#get_company_by_cnpj/1-examples" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Examples</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="n">get_company_by_cnpj</span><span class="p" data-group-id="3801753466-1">(</span><span class="mi">12345678901234</span><span class="p" data-group-id="3801753466-1">)</span><span class="w">
+</span><span class="p" data-group-id="3801753466-2">%</span><span class="nc" data-group-id="3801753466-2">Company</span><span class="p" data-group-id="3801753466-2">{</span><span class="p" data-group-id="3801753466-2">}</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="list_companies/0">
+
+  <div class="detail-header">
+    <a href="#list_companies/0" class="detail-link" title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">list_companies()</h1>
+
+      <a href="https://github.com/MauricioMSoares/info-cnpj/blob/main/lib/info_cnpj/companies.ex#L20" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>Returns the list of companies.</p><h2 id="list_companies/0-examples" class="section-heading">
+  <a href="#list_companies/0-examples" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Examples</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="n">list_companies</span><span class="p" data-group-id="7899054639-1">(</span><span class="p" data-group-id="7899054639-1">)</span><span class="w">
+</span><span class="p" data-group-id="7899054639-2">[</span><span class="p" data-group-id="7899054639-3">%</span><span class="nc" data-group-id="7899054639-3">Company</span><span class="p" data-group-id="7899054639-3">{</span><span class="p" data-group-id="7899054639-3">}</span><span class="p">,</span><span class="w"> </span><span class="n">...</span><span class="p" data-group-id="7899054639-2">]</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="update_company/2">
+
+  <div class="detail-header">
+    <a href="#update_company/2" class="detail-link" title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">update_company(company, attrs)</h1>
+
+      <a href="https://github.com/MauricioMSoares/info-cnpj/blob/main/lib/info_cnpj/companies.ex#L70" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>Updates a company.</p><h2 id="update_company/2-examples" class="section-heading">
+  <a href="#update_company/2-examples" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Examples</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="n">update_company</span><span class="p" data-group-id="8305594878-1">(</span><span class="n">company</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="8305594878-2">%{</span><span class="ss">field</span><span class="p">:</span><span class="w"> </span><span class="n">new_value</span><span class="p" data-group-id="8305594878-2">}</span><span class="p" data-group-id="8305594878-1">)</span><span class="w">
+</span><span class="p" data-group-id="8305594878-3">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="8305594878-4">%</span><span class="nc" data-group-id="8305594878-4">Company</span><span class="p" data-group-id="8305594878-4">{</span><span class="p" data-group-id="8305594878-4">}</span><span class="p" data-group-id="8305594878-3">}</span><span class="w">
+
+</span><span class="gp unselectable">iex&gt; </span><span class="n">update_company</span><span class="p" data-group-id="8305594878-5">(</span><span class="n">company</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="8305594878-6">%{</span><span class="ss">field</span><span class="p">:</span><span class="w"> </span><span class="n">bad_value</span><span class="p" data-group-id="8305594878-6">}</span><span class="p" data-group-id="8305594878-5">)</span><span class="w">
+</span><span class="p" data-group-id="8305594878-7">{</span><span class="ss">:error</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="8305594878-8">%</span><span class="nc" data-group-id="8305594878-8">Ecto.Changeset</span><span class="p" data-group-id="8305594878-8">{</span><span class="p" data-group-id="8305594878-8">}</span><span class="p" data-group-id="8305594878-7">}</span></code></pre>
+  </section>
+</section>
+
+    </div>
+  </section>
+
+      <footer class="footer">
+        <p>
+
+          <span class="line">
+            <button class="a-main footer-button display-quick-switch" title="Search HexDocs packages">
+              Search HexDocs
+            </button>
+
+              <a href="Info CNPJ.epub" title="ePub version">
+                Download ePub version
+              </a>
+
+          </span>
+        </p>
+
+        <p class="built-using">
+          Built using
+          <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.30.9) for the
+
+            <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
+        </p>
+      </footer>
+    </div>
+  </div>
+</main>
+</div>
+
+
+  </body>
+</html>

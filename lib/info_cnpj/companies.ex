@@ -105,7 +105,7 @@ defmodule InfoCnpj.Companies do
   @doc """
   Gets a single company by it's CNPJ.
 
-  ##Examples
+  ## Examples
 
       iex> get_company_by_cnpj(12345678901234)
       %Company{}
@@ -118,7 +118,7 @@ defmodule InfoCnpj.Companies do
   @doc """
   Creates a company with data retrieved from the external API.
 
-  ##Examples
+  ## Examples
 
       iex> create_retrieved_company(company)
       {:ok, %Company{}}
@@ -132,7 +132,7 @@ defmodule InfoCnpj.Companies do
   @doc """
   Creates a company struct using a JSON returned from the external API.
 
-  ##Examples
+  ## Examples
 
       iex> create_company_struct_from_json(data)
       %Company{}
